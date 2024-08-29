@@ -8,9 +8,15 @@ def tea_bags(people: int) -> int:
     return people * 2
 
 
+# error during first submission: "must use key word argument"
+# why use key word arguments? you can define arguments out of order by naming the parameter then assigning a value
+# argument is identifiable by the parameter name "people"
+# https://www.ibiblio.org/swaroopch/byteofpython/read/keyword-arguments.html#:~:text=There%20are%20two%20advantages%20%2D%20one,parameters%20have%20default%20argument%20values.
+
+
 def treats(people: int) -> int:
     """Calculate num of treats based on people"""
-    return int(tea_bags(people) * 1.5)
+    return int(tea_bags(people=people) * 1.5)
 
 
 def cost(tea_count: int, treat_count: int) -> float:
@@ -21,10 +27,12 @@ def cost(tea_count: int, treat_count: int) -> float:
 def main_planner(guests: int) -> None:
     """Calculate and allocate resources for tea party"""
     print("A Cozy Tea Party for " + str(guests) + " People!")
-    print(tea_bags(guests))
-    print(treats(guests))
-    print(cost(tea_bags(guests), treats(guests)))
+    print("Tea Bags: " + str(tea_bags(guests)))
+    print("Treats: " + str(treats(guests)))
+    print("Cost: $" + str(cost(tea_bags(guests), treats(guests))))
 
 
+# must be placed at end bc main_planner and functions inside main_planner aren't
+# defined yet
 if __name__ == "__main__":
-    main_planner(guests=int(input("How many guests are attending?")))
+    main_planner(guests=int(input("How many guests are attending your tea party? ")))
