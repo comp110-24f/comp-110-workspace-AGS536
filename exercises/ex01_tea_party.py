@@ -3,6 +3,14 @@
 __author__ = "730771832"
 
 
+def main_planner(guests: int) -> None:
+    """Calculate and allocate resources for tea party"""
+    print("A Cozy Tea Party for " + str(guests) + " People!")
+    print("Tea Bags: " + str(tea_bags(guests)))
+    print("Treats: " + str(treats(guests)))
+    print("Cost: $" + str(cost(tea_bags(guests), treats(guests))))
+
+
 def tea_bags(people: int) -> int:
     """Calculate num of tea bags based on people"""
     return people * 2
@@ -24,15 +32,6 @@ def cost(tea_count: int, treat_count: int) -> float:
     return tea_count * 0.5 + treat_count * 0.75
 
 
-def main_planner(guests: int) -> None:
-    """Calculate and allocate resources for tea party"""
-    print("A Cozy Tea Party for " + str(guests) + " People!")
-    print("Tea Bags: " + str(tea_bags(guests)))
-    print("Treats: " + str(treats(guests)))
-    print("Cost: $" + str(cost(tea_bags(guests), treats(guests))))
-
-
-# must be placed at end bc main_planner and functions inside main_planner aren't
-# defined yet
+# must be placed at end bc main_planner and functions called inside main_planner aren't defined yet
 if __name__ == "__main__":
     main_planner(guests=int(input("How many guests are attending your tea party? ")))
